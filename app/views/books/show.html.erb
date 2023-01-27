@@ -13,8 +13,12 @@
             <td>
               <%= link_to @book_i.title, book_path(@book_i.id) %></td>
             <td><%= @book_i.body %></td>
-            <td><%= link_to "Edit", edit_book_path(@book_i.id), class: "btn btn-success btn-sm" %></td>
-            <td><%= link_to "Destroy", book_path(@book_i.id), method: :delete, class: "btn btn-danger btn-sm",  "data-confirm" => "本当に削除しますか？" %></td>
+            <td>
+              <% if @book_i.user ==current_user %>
+              <%= link_to "Edit", edit_book_path(@book_i.id), class: "btn btn-success btn-sm" %></td>
+            <td>
+              <%= link_to "Destroy", book_path(@book_i.id), method: :delete, class: "btn btn-danger btn-sm",  "data-confirm" => "本当に削除しますか？" %>
+              <% end %></td>
            </tr>
         </tbody>
       </table>
